@@ -1,5 +1,6 @@
 #include <stack>
-#include "card.cpp"
+#include <algorithm>
+
 
 using namespace std;
 
@@ -17,12 +18,15 @@ void Deck::addCard(card c) {
     deck.push(c);
 }
 card Deck::removeCard() {
-    card c = deck.top;
+    card c = deck.top();
     deck.pop();
     return c;
 }
 void Deck::shuffle() {
-    
+    srand(time(0));
+    card* end   = &deck.top() + 1;
+    card* begin = end - deck.size();
+    random_shuffle(begin, end);
 }
 Deck::Deck() {
     deck.push(card(ace,spade));
@@ -82,6 +86,3 @@ Deck::Deck() {
     deck.push(card(king,heart));
 }
 
-int main() {
-    
-}
