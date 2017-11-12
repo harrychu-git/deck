@@ -17,7 +17,6 @@ card Hand::discard(int i) {
     return c;
 }
 void Hand::printHand() {
-    cout << "Your hand:" << endl;
     for(int i = 0; i < hand.size(); i++) {
         cout << "Card " << i << ": ";
         printCard(hand.at(i));
